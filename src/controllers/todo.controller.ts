@@ -4,6 +4,7 @@ import {
   Filter,
   repository,
   Where,
+  ModelDefinition,
 } from '@loopback/repository';
 import {
   post,
@@ -16,20 +17,22 @@ import {
   del,
   requestBody,
 } from '@loopback/rest';
-import {Reservas} from '../models';
-import {ReservasRepository} from '../repositories';
+import { Reservas } from '../models';
+import { ReservasRepository } from '../repositories';
+import { stringify } from 'querystring';
+import { DbDataSource } from '../datasources';
 
 export class TodoController {
   constructor(
     @repository(ReservasRepository)
-    public reservasRepository : ReservasRepository,
-  ) {}
+    public reservasRepository: ReservasRepository,
+  ) { }
 
   @post('/reservas', {
     responses: {
       '200': {
         description: 'Reservas model instance',
-        content: {'application/json': {schema: {'x-ts-type': Reservas}}},
+        content: { 'application/json': { schema: { 'x-ts-type': Reservas } } },
       },
     },
   })
@@ -41,7 +44,7 @@ export class TodoController {
     responses: {
       '200': {
         description: 'Reservas model count',
-        content: {'application/json': {schema: CountSchema}},
+        content: { 'application/json': { schema: CountSchema } },
       },
     },
   })
@@ -57,7 +60,7 @@ export class TodoController {
         description: 'Array of Reservas model instances',
         content: {
           'application/json': {
-            schema: {type: 'array', items: {'x-ts-type': Reservas}},
+            schema: { type: 'array', items: { 'x-ts-type': Reservas } },
           },
         },
       },
@@ -73,7 +76,7 @@ export class TodoController {
     responses: {
       '200': {
         description: 'Reservas PATCH success count',
-        content: {'application/json': {schema: CountSchema}},
+        content: { 'application/json': { schema: CountSchema } },
       },
     },
   })
@@ -88,7 +91,7 @@ export class TodoController {
     responses: {
       '200': {
         description: 'Reservas model instance',
-        content: {'application/json': {schema: {'x-ts-type': Reservas}}},
+        content: { 'application/json': { schema: { 'x-ts-type': Reservas } } },
       },
     },
   })
