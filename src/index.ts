@@ -1,7 +1,7 @@
-import {ConciergeApplication} from './application';
-import {ApplicationConfig} from '@loopback/core';
+import { ConciergeApplication } from './application';
+import { ApplicationConfig } from '@loopback/core';
 
-export {ConciergeApplication};
+export { ConciergeApplication };
 
 export async function main(options: ApplicationConfig = {}) {
   const app = new ConciergeApplication(options);
