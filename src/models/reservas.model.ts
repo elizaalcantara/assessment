@@ -2,12 +2,6 @@ import { Entity, model, property } from '@loopback/repository';
 
 @model({ settings: { "strict": false } })
 export class Reservas extends Entity {
-  @property({
-    type: 'number',
-    id: true,
-    required: true,
-  })
-  id: number;
 
   @property({
     type: 'string',
@@ -28,10 +22,37 @@ export class Reservas extends Entity {
   fimEm: string;
 
   @property({
+    type: 'number',
+    id: true,
+    required: false
+  })
+  id: number;
+
+  @property({
+    type: 'string',
+    required: false,
+    default: 'ativa',
+  })
+  status: string;
+
+  @property({
     type: 'date',
-    required: true,
+    required: false,
+    defaultFn: "now",
   })
   criadoEm: string;
+
+  @property({
+    type: 'number',
+    required: false,
+  })
+  duracao: number;
+
+  @property({
+    type: 'number',
+    required: false,
+  })
+  valor: number;
 
   // Define well-known properties here
 

@@ -5,6 +5,7 @@ import {
   repository,
   Where,
   ModelDefinition,
+  property,
 } from '@loopback/repository';
 import {
   post,
@@ -38,6 +39,7 @@ export class TodoController {
   })
   async create(@requestBody() reservas: Reservas): Promise<Reservas> {
     return await this.reservasRepository.create(reservas);
+    console.log(JSON.stringify(reservas))
   }
 
   @get('/reservas/count', {
