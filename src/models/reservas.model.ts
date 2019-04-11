@@ -46,13 +46,13 @@ export class Reservas extends Entity {
     type: 'number',
     required: false,
   })
-  duracao: number;
+  duracao = (+this.fimEm - +this.inicioEm) / 60000;
 
   @property({
     type: 'number',
     required: false,
   })
-  valor: number;
+  valor = this.duracao * 0.5;
 
   // Define well-known properties here
 
